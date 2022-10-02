@@ -21,7 +21,7 @@ export function ContactList() {
     <>
       {isLoading && !error && <p>Loading contacts...</p>}
       {error && <p>{error}</p>}
-      {filtredContacts.length > 0 && !error && !isLoading ? (
+      {filtredContacts.length > 0 && !error ? (
         <StyledContactList>
           {filtredContacts.map(({ id, name, phone }) => (
             <StyledContact key={id}>
@@ -30,7 +30,7 @@ export function ContactList() {
           ))}
         </StyledContactList>
       ) : (
-        <p>Not found any contact :(</p>
+        !isLoading && <p>Not found any contact :(</p>
       )}
     </>
   );
